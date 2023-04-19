@@ -6,8 +6,8 @@ from keras.models import load_model
 import numpy as np
 from pygame import mixer
 
-mixer.init()
-sound = mixer.Sound('alarm.wav')
+mixer.music.load('alarm.wav')
+#sound = mixer.Sound('alarm.wav')
 fc=os.path.dirname(cv2.__file__)+"/data/haarcascade_frontalface_alt.xml"
 lc=os.path.dirname(cv2.__file__)+"/data/haarcascade_lefteye_2splits.xml"
 rc=os.path.dirname(cv2.__file__)+"/data/haarcascade_righteye_2splits.xml"
@@ -89,7 +89,7 @@ def callback(frame:av.VideoFrame)->av.VideoFrame:
     if (score >=10):
         # person is feeling sleepy so we beep the alarm
         try:
-            sound.play()
+            pygame.mixer.music.play(0)
 
         except:  # isplaying = False
             pass
